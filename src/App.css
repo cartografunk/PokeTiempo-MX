@@ -132,6 +132,31 @@ h3 {
   margin-top: 30px;
 }
 
+.hero-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.hero-socials a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 11px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.hero-socials a:hover {
+  background: var(--yellow);
+}
+
 .button,
 .result-actions button,
 .answer-grid button {
@@ -308,6 +333,39 @@ h3 {
 .section-heading {
   max-width: 760px;
   margin-bottom: 28px;
+}
+
+.intro-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 5vw, 64px);
+  background: var(--white);
+}
+
+.intro-lead {
+  max-width: 620px;
+}
+
+.intro-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.intro-grid article {
+  padding: 18px;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  background: var(--cream);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.intro-grid h3 {
+  margin-bottom: 8px;
+}
+
+.intro-grid p {
+  margin-bottom: 0;
+  font-size: 16px;
 }
 
 .format-grid,
@@ -619,6 +677,7 @@ h3 {
 @media (max-width: 920px) {
   .topbar,
   .hero-section,
+  .intro-section,
   .split,
   .shop-layout,
   .radio-strip,

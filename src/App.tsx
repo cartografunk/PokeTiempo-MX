@@ -23,6 +23,21 @@ const collaborationFormats = [
   'Coberturas especiales para marcas, medios e instituciones',
 ]
 
+const introPoints = [
+  {
+    title: 'Clima con lenguaje de comunidad',
+    text: 'El proyecto baja la meteorologia a una conversacion visual, cotidiana y facil de compartir.',
+  },
+  {
+    title: 'Cultura pop sin perder rigor',
+    text: 'La estetica y el humor abren la puerta; la informacion clara sostiene la confianza.',
+  },
+  {
+    title: 'Canales que ya funcionan',
+    text: 'La web ordena la historia y manda a la gente hacia Instagram, TikTok, X y Radio Poketiempo.',
+  },
+]
+
 const mediaStats = [
   { value: '142K+', label: 'comunidad en Instagram' },
   { value: '1.6K+', label: 'publicaciones indexadas' },
@@ -158,7 +173,7 @@ function App() {
       <section className="hero-section" id="inicio">
         <div className="hero-copy">
           <p className="eyebrow">Meteorologia + cultura pop + comunidad</p>
-          <h1>Poketiempo MX convierte el clima en contenido que Mexico entiende, recuerda y comparte.</h1>
+          <h1>Poketiempo MX</h1>
           <p className="hero-text">
             Un hub de marca para presentar colaboraciones, media kit y experiencias interactivas
             sin competir con las redes que ya sostienen la comunidad.
@@ -166,6 +181,13 @@ function App() {
           <div className="hero-actions">
             <a className="button primary" href="#colaboraciones">Colaborar</a>
             <a className="button secondary" href="#test">Hacer el test</a>
+          </div>
+          <div className="hero-socials" aria-label="Redes oficiales de Poketiempo MX">
+            {socials.map((social) => (
+              <a href={social.url} target="_blank" rel="noreferrer" key={social.label}>
+                <span>{social.label}</span>
+              </a>
+            ))}
           </div>
         </div>
 
@@ -192,6 +214,25 @@ function App() {
             <span></span>
             <span></span>
           </div>
+        </div>
+      </section>
+
+      <section className="section intro-section" id="intro">
+        <div className="intro-lead">
+          <p className="eyebrow">¿Que es Poketiempo MX?</p>
+          <h2>Una forma mas cercana de hablar del cielo.</h2>
+          <p>
+            Poketiempo MX es un proyecto de divulgacion climatica que convierte temas meteorologicos
+            en contenido entendible, recordable y compartible para audiencias digitales en Mexico.
+          </p>
+        </div>
+        <div className="intro-grid">
+          {introPoints.map((point) => (
+            <article key={point.title}>
+              <h3>{point.title}</h3>
+              <p>{point.text}</p>
+            </article>
+          ))}
         </div>
       </section>
 
