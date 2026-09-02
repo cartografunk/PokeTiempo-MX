@@ -15,12 +15,12 @@ const socials = [
 ]
 
 const collaborationFormats = [
-  'Reels y videos cortos con narrativa meteorologica',
+  'Videos cortos con narrativa meteorologica',
   'Carruseles educativos para temporadas climaticas',
-  'Historias con encuestas, stickers y llamados a la accion',
-  'Charlas, talleres y activaciones para comunidades',
-  'Campanas de prevencion con lenguaje claro y memorable',
-  'Coberturas especiales para marcas, medios e instituciones',
+  'Historias con encuestas y participacion de comunidad',
+  'Charlas, talleres y activaciones educativas',
+  'Campanas de prevencion con lenguaje claro',
+  'Coberturas especiales con enfoque de divulgacion',
 ]
 
 const introPoints = [
@@ -34,7 +34,7 @@ const introPoints = [
   },
   {
     title: 'Canales que ya funcionan',
-    text: 'La web ordena la historia y manda a la gente hacia Instagram, TikTok, X y Radio Poketiempo.',
+    text: 'La web ordena la historia del proyecto; la conversacion diaria se mantiene en Instagram, TikTok, X y Radio Poketiempo.',
   },
 ]
 
@@ -162,6 +162,7 @@ function App() {
           <span>Poketiempo MX</span>
         </a>
         <div className="nav-links">
+          <a href="#intro">Proyecto</a>
           <a href="#colaboraciones">Colaboraciones</a>
           <a href="#mediakit">Media kit</a>
           <a href="#tienda">Tienda</a>
@@ -175,19 +176,12 @@ function App() {
           <p className="eyebrow">Meteorologia + cultura pop + comunidad</p>
           <h1>Poketiempo MX</h1>
           <p className="hero-text">
-            Un hub de marca para presentar colaboraciones, media kit y experiencias interactivas
-            sin competir con las redes que ya sostienen la comunidad.
+            Un sitio oficial para entender el proyecto, consultar su media kit y explorar
+            experiencias interactivas sin mover la conversacion fuera de sus canales sociales.
           </p>
           <div className="hero-actions">
-            <a className="button primary" href="#colaboraciones">Colaborar</a>
+            <a className="button primary" href="#intro">Conocer el proyecto</a>
             <a className="button secondary" href="#test">Hacer el test</a>
-          </div>
-          <div className="hero-socials" aria-label="Redes oficiales de Poketiempo MX">
-            {socials.map((social) => (
-              <a href={social.url} target="_blank" rel="noreferrer" key={social.label}>
-                <span>{social.label}</span>
-              </a>
-            ))}
           </div>
         </div>
 
@@ -207,7 +201,7 @@ function App() {
               <span style={{ '--height': '56%' } as CSSProperties}></span>
               <span style={{ '--height': '73%' } as CSSProperties}></span>
             </div>
-            <p>Campana lista para despegar</p>
+            <p>senal climatica en comunidad</p>
           </div>
           <div className="console-controls">
             <span></span>
@@ -243,16 +237,16 @@ function App() {
         </div>
         <p>
           Poketiempo MX traduce fenomenos meteorologicos en piezas visuales, utiles y conversables.
-          Para marcas e instituciones, eso significa entrar a temas de clima, prevencion y actualidad
-          con un lenguaje que no se siente impuesto.
+          Su valor esta en acercar temas de clima, prevencion y actualidad a una audiencia que
+          busca explicaciones claras, contexto y una identidad reconocible.
         </p>
       </section>
 
       <section className="section" id="colaboraciones">
         <div className="section-heading">
           <p className="eyebrow">Colaboraciones</p>
-          <h2>Formatos para campanas con memoria.</h2>
-          <p>El sitio presenta posibilidades comerciales; la conversacion y la comunidad siguen viviendo en redes.</p>
+          <h2>Formas de colaborar con el proyecto.</h2>
+          <p>Una referencia para marcas, medios e instituciones que quieran participar desde la educacion, la cultura y la prevencion climatica.</p>
         </div>
         <div className="format-grid">
           {collaborationFormats.map((format) => (
@@ -267,7 +261,7 @@ function App() {
       <section className="section media-panel" id="mediakit">
         <div className="section-heading">
           <p className="eyebrow">Media kit digital</p>
-          <h2>Datos claros para marcas, medios e instituciones.</h2>
+          <h2>Informacion esencial para evaluar colaboraciones.</h2>
         </div>
         <div className="stats-grid">
           {mediaStats.map((stat) => (
@@ -275,14 +269,6 @@ function App() {
               <strong>{stat.value}</strong>
               <span>{stat.label}</span>
             </div>
-          ))}
-        </div>
-        <div className="social-grid">
-          {socials.map((social) => (
-            <a href={social.url} target="_blank" rel="noreferrer" key={social.label}>
-              <span>{social.label}</span>
-              <strong>{social.handle}</strong>
-            </a>
           ))}
         </div>
       </section>
@@ -293,7 +279,7 @@ function App() {
           <h2>Merch y objetos para llevar el clima puesto.</h2>
           <p>
             Un apartado preparado para futuros drops sin convertir el preview en ecommerce todavia:
-            primero lista de interes, colecciones y productos validables con la comunidad.
+            primero colecciones piloto, interes de comunidad y posibles alianzas de produccion.
           </p>
         </div>
         <div className="shop-layout">
@@ -315,7 +301,7 @@ function App() {
           </div>
         </div>
         <a className="button primary" href="mailto:hola@poketiempo.mx?subject=Me%20interesa%20la%20tienda%20Poketiempo">
-          Apuntarme al primer drop
+          Consultar futuros drops
         </a>
       </section>
 
@@ -383,12 +369,31 @@ function App() {
         </a>
       </section>
 
+      <section className="section channels-section" id="canales">
+        <div className="section-heading">
+          <p className="eyebrow">Canales oficiales</p>
+          <h2>La comunidad vive en redes.</h2>
+          <p>
+            Este sitio funciona como carta de presentacion y archivo del proyecto. Para seguir el ritmo diario,
+            las actualizaciones y Radio Poketiempo, estos son los canales oficiales.
+          </p>
+        </div>
+        <div className="social-grid">
+          {socials.map((social) => (
+            <a href={social.url} target="_blank" rel="noreferrer" key={social.label}>
+              <span>{social.label}</span>
+              <strong>{social.handle}</strong>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <footer className="footer" id="contacto">
         <div>
           <strong>Poketiempo MX</strong>
-          <p>Hub de marca, media kit y experiencias interactivas para colaboraciones climaticas.</p>
+          <p>Sitio oficial, media kit y experiencias interactivas del proyecto.</p>
         </div>
-        <a className="button secondary" href="mailto:hola@poketiempo.mx">Proponer colaboracion</a>
+        <a className="button secondary" href="mailto:hola@poketiempo.mx">Contacto</a>
       </footer>
     </main>
   )
