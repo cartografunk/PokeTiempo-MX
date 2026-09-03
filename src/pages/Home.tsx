@@ -5,16 +5,12 @@ import SocialGrid from '../components/SocialGrid'
 
 const introPoints = [
   {
-    title: 'Clima con lenguaje de comunidad',
-    text: 'El proyecto baja la meteorologia a una conversacion visual, cotidiana y facil de compartir.',
+    title: 'Logo',
+    text: 'Pendiente (IMAGEN, Opción 1 Collage',
   },
   {
-    title: 'Cultura pop sin perder rigor',
-    text: 'La estetica y el humor abren la puerta; la informacion clara sostiene la confianza.',
-  },
-  {
-    title: 'Canales que ya funcionan',
-    text: 'La web ordena la historia del proyecto; la conversacion diaria se mantiene en Instagram, TikTok, X y Radio Poketiempo.',
+    title: 'Imagen 1',
+    text: 'Pendiente',
   },
 ]
 
@@ -47,10 +43,10 @@ function Home() {
 
       <section className="hero-section" id="inicio">
         <div className="hero-copy">
-          <p className="eyebrow">Meteorologia + cultura pop + comunidad</p>
+          <p className="eyebrow">Meteorologia + climatología + cultura pop</p>
           <h1>Poketiempo MX</h1>
           <p className="hero-text">
-            El tiempo en México para gente chidix
+            El tiempo para gente chidix :)
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#intro">Conocer el proyecto</a>
@@ -87,10 +83,10 @@ function Home() {
       <section className="section intro-section" id="intro">
         <div className="intro-lead">
           <p className="eyebrow">¿Que es Poketiempo MX?</p>
-          <h2>Una forma mas cercana de hablar del cielo.</h2>
+          <h2>Una forma mas cercana de hablar del cielo</h2>
           <p>
-            Poketiempo MX es un proyecto de divulgacion climatica que convierte temas meteorologicos
-            en contenido entendible, recordable y compartible para audiencias digitales en Mexico.
+            Poketiempo MX es un proyecto de divulgación meteorológica que convierte temas sobre el tiempo atmosférico
+            en contenido entendible, recordable y compartible para audiencias digitales en Mexico
           </p>
         </div>
         <div className="intro-grid">
@@ -103,60 +99,13 @@ function Home() {
         </div>
       </section>
 
-      <section className="section split">
-        <div>
-          <p className="eyebrow">Por que funciona</p>
-          <h2>Una marca de clima que si entiende internet.</h2>
-        </div>
-        <p>
-          Poketiempo MX traduce fenomenos meteorologicos en piezas visuales, utiles y conversables.
-          Su valor esta en acercar temas de clima, prevencion y actualidad a una audiencia que
-          busca explicaciones claras, contexto y una identidad reconocible.
-        </p>
-      </section>
-
-      <section className="section switchboard-section" id="explorar">
-        <div className="section-heading">
-          <p className="eyebrow">Explorar</p>
-          <h2>Media kit, tienda y test en un clic.</h2>
-        </div>
-        <div className="intro-grid">
-          {switchboardCards.map((card) => (
-            <Link
-              to={card.to}
-              key={card.title}
-              style={{ display: 'block', color: 'inherit', textDecoration: 'none' }}
-            >
-              <article>
-                <h3>{card.title}</h3>
-                <p>{card.text}</p>
-              </article>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="section radio-strip">
-        <div>
-          <p className="eyebrow">Radio Poketiempo</p>
-          <h2>El canal vive en Instagram.</h2>
-        </div>
-        <p>
-          La web no reemplaza Radio Poketiempo: lo presenta, lo legitima y manda a la gente al canal oficial dentro
-          de la suite de Meta.
-        </p>
-        <a className="button primary" href="https://www.instagram.com/poketiempo_mx/" target="_blank" rel="noreferrer">
-          Abrir Instagram
-        </a>
-      </section>
-
+     
       <section className="section channels-section" id="canales">
         <div className="section-heading">
-          <p className="eyebrow">Canales oficiales</p>
-          <h2>La comunidad vive en redes.</h2>
+          <p className="eyebrow">Redes sociales</p>
+          <h2>La comunidad vive en redes</h2>
           <p>
-            Este sitio funciona como carta de presentacion y archivo del proyecto. Para seguir el ritmo diario,
-            las actualizaciones y Radio Poketiempo, estos son los canales oficiales.
+            Síguenos en nuestras redes sociales
           </p>
         </div>
         <SocialGrid />
