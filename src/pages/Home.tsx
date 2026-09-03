@@ -41,7 +41,7 @@ function Home() {
     <>
       <Seo
         title="Poketiempo MX | Clima, cultura pop y comunidad"
-        description="Sitio oficial de Poketiempo MX: divulgacion climatica, cultura pop, comunidad, media kit y experiencias interactivas sobre el clima en Mexico."
+        description="El tiempo en México para gente chidix"
         path="/"
       />
 
@@ -50,12 +50,11 @@ function Home() {
           <p className="eyebrow">Meteorologia + cultura pop + comunidad</p>
           <h1>Poketiempo MX</h1>
           <p className="hero-text">
-            Un sitio oficial para entender el proyecto, consultar su media kit y explorar
-            experiencias interactivas sin mover la conversacion fuera de sus canales sociales.
+            El tiempo en México para gente chidix
           </p>
           <div className="hero-actions">
             <a className="button primary" href="#intro">Conocer el proyecto</a>
-            <Link className="button secondary" to="/test">Hacer el test</Link>
+            <Link className="button secondary" to="/test">Test: ¿Qué nube soy?</Link>
           </div>
         </div>
 
