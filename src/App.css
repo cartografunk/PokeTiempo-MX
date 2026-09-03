@@ -464,6 +464,107 @@ h3 {
   margin-bottom: 24px;
 }
 
+.featured-product {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  gap: 22px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+.product-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.42fr);
+  gap: 14px;
+}
+
+.product-gallery figure {
+  margin: 0;
+}
+
+.product-main-image,
+.product-look-image,
+.product-info {
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.product-main-image {
+  min-height: 520px;
+}
+
+.product-look-image {
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+  background:
+    linear-gradient(90deg, rgba(31, 42, 68, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(31, 42, 68, 0.07) 1px, transparent 1px),
+    #e9f6ff;
+  background-size: 22px 22px;
+}
+
+.product-main-image img,
+.product-look-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.product-main-image img {
+  object-fit: cover;
+}
+
+.product-look-image img {
+  max-height: 94%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(22px, 4vw, 36px);
+}
+
+.product-info .tag {
+  align-self: flex-start;
+  margin-bottom: 22px;
+}
+
+.product-info h3 {
+  max-width: 420px;
+  margin-bottom: 14px;
+  font-family: var(--display);
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.05;
+}
+
+.product-info p {
+  margin-bottom: 20px;
+}
+
+.product-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.product-meta span {
+  min-height: 44px;
+  padding: 10px;
+  border: 3px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 900;
+}
+
 .shop-preview,
 .shop-list article {
   border: 3px solid var(--ink);
@@ -522,6 +623,14 @@ h3 {
   max-width: 280px;
   margin-bottom: 0;
   font-size: 15px;
+}
+
+.bucket-note {
+  min-height: 260px;
+}
+
+.bucket-note .card-icon {
+  margin-bottom: 16px;
 }
 
 .shop-list {
@@ -658,6 +767,7 @@ h3 {
   .hero-section,
   .intro-section,
   .split,
+  .featured-product,
   .shop-layout,
   .radio-strip,
   .footer {
@@ -681,8 +791,14 @@ h3 {
   .format-grid,
   .stats-grid,
   .social-grid,
+  .product-gallery,
   .shop-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-main-image,
+  .product-look-image {
+    min-height: 420px;
   }
 }
 
@@ -694,9 +810,16 @@ h3 {
   .format-grid,
   .stats-grid,
   .social-grid,
+  .product-gallery,
+  .product-meta,
   .shop-list,
   .answer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-main-image,
+  .product-look-image {
+    min-height: 360px;
   }
 
   .console {

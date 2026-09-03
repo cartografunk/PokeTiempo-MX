@@ -36,7 +36,7 @@ function Layout() {
       <footer className="footer" id="contacto">
         <div>
           <strong>Poketiempo MX</strong>
-          <p>Sitio oficial, media kit y experiencias interactivas del proyecto.</p>
+          <p>El tiempo en México para gente chidix</p>
         </div>
         <a className="button secondary" href="mailto:hola@poketiempo.mx">Contacto</a>
       </footer>
