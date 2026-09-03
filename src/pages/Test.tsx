@@ -1,5 +1,5 @@
 import { useMemo, useState, type CSSProperties } from 'react'
-import usePageTitle from '../hooks/usePageTitle'
+import Seo from '../components/Seo'
 
 type ResultKey = 'cumulo' | 'cumulonimbo' | 'cirro' | 'estrato'
 type Answer = {
@@ -108,61 +108,65 @@ function Test() {
   }, [answers])
 
   const result = resultKey ? results[resultKey] : null
-
-  usePageTitle(
-    result ? `Soy ${result.name} | PokéTest Poketiempo MX` : '¿Que nube eres? | PokéTest Poketiempo MX',
-  )
+  const seoTitle = result ? `Soy ${result.name} | PokéTest Poketiempo MX` : 'Test Poketiempo MX | Que nube eres'
+  const seoDescription = result
+    ? `Mi resultado del PokéTest fue ${result.name}: ${result.description}`
+    : 'Haz el PokéTest de Poketiempo MX, descubre que tipo de nube eres y comparte tu resultado con tu comunidad.'
 
   return (
-    <section className="section test-section" id="test">
-      <div className="section-heading">
-        <p className="eyebrow">PokéTest</p>
-        <h2>¿Que nube eres?</h2>
-        <p>Un gancho interactivo para que la audiencia juegue, aprenda y comparta sin salir del universo Poketiempo.</p>
-      </div>
+    <>
+      <Seo title={seoTitle} description={seoDescription} path="/test" />
 
-      <div className="quiz-card">
-        {!result && activeQuestion && (
-          <>
-            <div className="quiz-progress">
-              <span>Pregunta {answers.length + 1} / {questions.length}</span>
-              <div><span style={{ width: `${(answers.length / questions.length) * 100}%` }}></span></div>
-            </div>
-            <h3>{activeQuestion.prompt}</h3>
-            <div className="answer-grid">
-              {activeQuestion.answers.map((answer, index) => (
-                <button key={answer.label} type="button" onClick={() => setAnswers([...answers, index])}>
-                  {answer.label}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
+      <section className="section test-section" id="test">
+        <div className="section-heading">
+          <p className="eyebrow">PokéTest</p>
+          <h2>¿Que nube eres?</h2>
+          <p>Un gancho interactivo para que la audiencia juegue, aprenda y comparta sin salir del universo Poketiempo.</p>
+        </div>
 
-        {result && (
-          <div className="result-card" style={{ '--result-color': result.color } as CSSProperties}>
-            <p className="eyebrow">Tu resultado</p>
-            <h3>{result.name}</h3>
-            <span>{result.tag}</span>
-            <p>{result.description}</p>
-            <div className="fact-box">
-              <strong>Dato climatico</strong>
-              <p>{result.fact}</p>
+        <div className="quiz-card">
+          {!result && activeQuestion && (
+            <>
+              <div className="quiz-progress">
+                <span>Pregunta {answers.length + 1} / {questions.length}</span>
+                <div><span style={{ width: `${(answers.length / questions.length) * 100}%` }}></span></div>
+              </div>
+              <h3>{activeQuestion.prompt}</h3>
+              <div className="answer-grid">
+                {activeQuestion.answers.map((answer, index) => (
+                  <button key={answer.label} type="button" onClick={() => setAnswers([...answers, index])}>
+                    {answer.label}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+
+          {result && (
+            <div className="result-card" style={{ '--result-color': result.color } as CSSProperties}>
+              <p className="eyebrow">Tu resultado</p>
+              <h3>{result.name}</h3>
+              <span>{result.tag}</span>
+              <p>{result.description}</p>
+              <div className="fact-box">
+                <strong>Dato climatico</strong>
+                <p>{result.fact}</p>
+              </div>
+              <div className="result-actions">
+                <button type="button" onClick={() => setAnswers([])}>Repetir test</button>
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Soy ${result.name} en el test de Poketiempo MX. ¿Que nube eres?`)}&url=${encodeURIComponent(`${window.location.origin}/test`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Compartir
+                </a>
+              </div>
             </div>
-            <div className="result-actions">
-              <button type="button" onClick={() => setAnswers([])}>Repetir test</button>
-              <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Soy ${result.name} en el test de Poketiempo MX. ¿Que nube eres?`)}&url=${encodeURIComponent(`${window.location.origin}/test`)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Compartir
-              </a>
-            </div>
-          </div>
-        )}
-      </div>
-    </section>
+          )}
+        </div>
+      </section>
+    </>
   )
 }
 

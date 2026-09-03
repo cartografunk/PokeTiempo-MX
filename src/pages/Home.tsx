@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { CSSProperties } from 'react'
+import Seo from '../components/Seo'
 import SocialGrid from '../components/SocialGrid'
-import usePageTitle from '../hooks/usePageTitle'
 
 const introPoints = [
   {
@@ -37,10 +37,14 @@ const switchboardCards = [
 ]
 
 function Home() {
-  usePageTitle('Poketiempo MX | Clima, cultura pop y comunidad')
-
   return (
     <>
+      <Seo
+        title="Poketiempo MX | Clima, cultura pop y comunidad"
+        description="Sitio oficial de Poketiempo MX: divulgacion climatica, cultura pop, comunidad, media kit y experiencias interactivas sobre el clima en Mexico."
+        path="/"
+      />
+
       <section className="hero-section" id="inicio">
         <div className="hero-copy">
           <p className="eyebrow">Meteorologia + cultura pop + comunidad</p>

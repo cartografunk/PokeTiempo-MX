@@ -1,5 +1,5 @@
+import Seo from '../components/Seo'
 import StatsGrid from '../components/StatsGrid'
-import usePageTitle from '../hooks/usePageTitle'
 
 const collaborationFormats = [
   'Videos cortos con narrativa meteorologica',
@@ -11,10 +11,14 @@ const collaborationFormats = [
 ]
 
 function MediaKit() {
-  usePageTitle('Media kit | Poketiempo MX')
-
   return (
     <>
+      <Seo
+        title="Media Kit Poketiempo MX | Audiencia, redes y colaboraciones"
+        description="Consulta el media kit de Poketiempo MX con datos de comunidad, canales sociales y formatos de colaboracion para marcas, medios e instituciones."
+        path="/media-kit"
+      />
+
       <section className="section" id="colaboraciones">
         <div className="section-heading">
           <p className="eyebrow">Colaboraciones</p>
