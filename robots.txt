@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://poketiempo.mx/sitemap.xml
