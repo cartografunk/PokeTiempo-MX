@@ -1,0 +1,299 @@
+diff --git a/index.html b/index.html
+index 931fbef..7b8829f 100644
+--- a/index.html
++++ b/index.html
+@@ -16,6 +16,19 @@
+     <meta name="twitter:description" content="Clima, cultura pop y comunidad en Mexico." />
+     <meta name="twitter:image" content="./favicon.png" />
+     <title>Poketiempo MX | Clima, cultura pop y comunidad</title>
++    <script type="text/javascript">
++      // Contraparte de public/404.html: si venimos de un redirect de SPA
++      // (querystring ?/ruta), restauramos la URL real antes de que monte React,
++      // asi el router arranca ya en la ruta correcta.
++      (function (l) {
++        if (l.search[1] === '/') {
++          var decoded = l.search.slice(1).split('&').map(function (s) {
++            return s.replace(/~and~/g, '&')
++          }).join('?')
++          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
++        }
++      })(window.location)
++    </script>
+   </head>
+   <body>
+     <div id="root"></div>
+diff --git a/public/404.html b/public/404.html
+new file mode 100644
+index 0000000..ca23625
+--- /dev/null
++++ b/public/404.html
+@@ -0,0 +1,30 @@
++<!DOCTYPE html>
++<html lang="es-MX">
++  <head>
++    <meta charset="UTF-8" />
++    <title>Poketiempo MX</title>
++    <script type="text/javascript">
++      // Truco estandar para SPAs en GitHub Pages (github.com/rafgraph/spa-github-pages).
++      // GitHub Pages no reescribe rutas de client-side routing: cuando alguien entra
++      // directo a /PokeTiempo-MX/test o refresca esa URL, sirve este 404.html.
++      // Aqui codificamos la ruta real en un querystring y redirigimos a index.html,
++      // que la decodifica (ver script en index.html) y restaura la URL con
++      // history.replaceState sin volver a recargar.
++      //
++      // pathSegmentsToKeep = 1 porque el sitio vive bajo /PokeTiempo-MX/ (un segmento).
++      // Si se muda a un dominio propio en raiz, cambiar a 0 (o borrar este archivo
++      // junto con el script de index.html, ya que en raiz no hace falta).
++      var pathSegmentsToKeep = 1
++
++      var l = window.location
++      l.replace(
++        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
++        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
++        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
++        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
++        l.hash
++      )
++    </script>
++  </head>
++  <body></body>
++</html>
+diff --git a/src/App.tsx b/src/App.tsx
+index 818f993..f7c712e 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -4,41 +4,50 @@ import Home from './pages/Home'
+ import MediaKit from './pages/MediaKit'
+ import Tienda from './pages/Tienda'
+ import Test from './pages/Test'
++import useScrollToHash from './hooks/useScrollToHash'
++
++function Layout() {
++  useScrollToHash()
+ 
+-function App() {
+   return (
+-    <BrowserRouter>
+-      <main>
+-        <nav className="topbar" aria-label="Navegacion principal">
+-          <Link className="brand" to="/" aria-label="Poketiempo MX inicio">
+-            <span className="brand-mark">PT</span>
+-            <span>Poketiempo MX</span>
+-          </Link>
+-          <div className="nav-links">
+-            <Link to="/#intro">Proyecto</Link>
+-            <Link to="/media-kit#colaboraciones">Colaboraciones</Link>
+-            <Link to="/media-kit">Media kit</Link>
+-            <Link to="/tienda">Tienda</Link>
+-            <Link to="/test">Test</Link>
+-            <a href="#contacto">Contacto</a>
+-          </div>
+-        </nav>
++    <main>
++      <nav className="topbar" aria-label="Navegacion principal">
++        <Link className="brand" to="/" aria-label="Poketiempo MX inicio">
++          <span className="brand-mark">PT</span>
++          <span>Poketiempo MX</span>
++        </Link>
++        <div className="nav-links">
++          <Link to="/#intro">Proyecto</Link>
++          <Link to="/media-kit#colaboraciones">Colaboraciones</Link>
++          <Link to="/media-kit">Media kit</Link>
++          <Link to="/tienda">Tienda</Link>
++          <Link to="/test">Test</Link>
++          <a href="#contacto">Contacto</a>
++        </div>
++      </nav>
+ 
+-        <Routes>
+-          <Route path="/" element={<Home />} />
+-          <Route path="/media-kit" element={<MediaKit />} />
+-          <Route path="/tienda" element={<Tienda />} />
+-          <Route path="/test" element={<Test />} />
+-        </Routes>
++      <Routes>
++        <Route path="/" element={<Home />} />
++        <Route path="/media-kit" element={<MediaKit />} />
++        <Route path="/tienda" element={<Tienda />} />
++        <Route path="/test" element={<Test />} />
++      </Routes>
+ 
+-        <footer className="footer" id="contacto">
+-          <div>
+-            <strong>Poketiempo MX</strong>
+-            <p>Sitio oficial, media kit y experiencias interactivas del proyecto.</p>
+-          </div>
+-          <a className="button secondary" href="mailto:hola@poketiempo.mx">Contacto</a>
+-        </footer>
+-      </main>
++      <footer className="footer" id="contacto">
++        <div>
++          <strong>Poketiempo MX</strong>
++          <p>Sitio oficial, media kit y experiencias interactivas del proyecto.</p>
++        </div>
++        <a className="button secondary" href="mailto:hola@poketiempo.mx">Contacto</a>
++      </footer>
++    </main>
++  )
++}
++
++function App() {
++  return (
++    <BrowserRouter basename={import.meta.env.BASE_URL}>
++      <Layout />
+     </BrowserRouter>
+   )
+ }
+diff --git a/src/hooks/usePageTitle.ts b/src/hooks/usePageTitle.ts
+new file mode 100644
+index 0000000..4217def
+--- /dev/null
++++ b/src/hooks/usePageTitle.ts
+@@ -0,0 +1,14 @@
++import { useEffect } from 'react'
++
++/**
++ * Actualiza document.title por pagina. Sin dependencias extra (react-helmet
++ * no es necesario para algo tan simple en una SPA sin SSR).
++ * Pasar el titulo completo, ej: 'Media kit | Poketiempo MX'.
++ */
++function usePageTitle(title: string) {
++  useEffect(() => {
++    document.title = title
++  }, [title])
++}
++
++export default usePageTitle
+diff --git a/src/hooks/useScrollToHash.ts b/src/hooks/useScrollToHash.ts
+new file mode 100644
+index 0000000..31a93c9
+--- /dev/null
++++ b/src/hooks/useScrollToHash.ts
+@@ -0,0 +1,31 @@
++import { useEffect } from 'react'
++import { useLocation } from 'react-router-dom'
++
++/**
++ * Al navegar a una ruta con hash (ej. /media-kit#colaboraciones), hace scroll
++ * al elemento correspondiente. React Router no hace esto automaticamente en
++ * navegacion client-side (a diferencia de un <a href="#ancla"> nativo).
++ */
++function useScrollToHash() {
++  const { hash, pathname } = useLocation()
++
++  useEffect(() => {
++    if (!hash) {
++      window.scrollTo({ top: 0 })
++      return
++    }
++
++    const id = hash.replace('#', '')
++    // Se espera un tick a que el DOM de la nueva pagina este montado.
++    const timer = window.setTimeout(() => {
++      const el = document.getElementById(id)
++      if (el) {
++        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
++      }
++    }, 0)
++
++    return () => window.clearTimeout(timer)
++  }, [hash, pathname])
++}
++
++export default useScrollToHash
+diff --git a/src/pages/Home.tsx b/src/pages/Home.tsx
+index d6d4b7f..db66afd 100644
+--- a/src/pages/Home.tsx
++++ b/src/pages/Home.tsx
+@@ -1,6 +1,7 @@
+ import { Link } from 'react-router-dom'
+ import type { CSSProperties } from 'react'
+ import SocialGrid from '../components/SocialGrid'
++import usePageTitle from '../hooks/usePageTitle'
+ 
+ const introPoints = [
+   {
+@@ -36,6 +37,8 @@ const switchboardCards = [
+ ]
+ 
+ function Home() {
++  usePageTitle('Poketiempo MX | Clima, cultura pop y comunidad')
++
+   return (
+     <>
+       <section className="hero-section" id="inicio">
+diff --git a/src/pages/MediaKit.tsx b/src/pages/MediaKit.tsx
+index dabae09..95bd77c 100644
+--- a/src/pages/MediaKit.tsx
++++ b/src/pages/MediaKit.tsx
+@@ -1,4 +1,5 @@
+ import StatsGrid from '../components/StatsGrid'
++import usePageTitle from '../hooks/usePageTitle'
+ 
+ const collaborationFormats = [
+   'Videos cortos con narrativa meteorologica',
+@@ -10,6 +11,8 @@ const collaborationFormats = [
+ ]
+ 
+ function MediaKit() {
++  usePageTitle('Media kit | Poketiempo MX')
++
+   return (
+     <>
+       <section className="section" id="colaboraciones">
+diff --git a/src/pages/Test.tsx b/src/pages/Test.tsx
+index 69f720b..d388863 100644
+--- a/src/pages/Test.tsx
++++ b/src/pages/Test.tsx
+@@ -1,4 +1,5 @@
+ import { useMemo, useState, type CSSProperties } from 'react'
++import usePageTitle from '../hooks/usePageTitle'
+ 
+ type ResultKey = 'cumulo' | 'cumulonimbo' | 'cirro' | 'estrato'
+ type Answer = {
+@@ -108,6 +109,10 @@ function Test() {
+ 
+   const result = resultKey ? results[resultKey] : null
+ 
++  usePageTitle(
++    result ? `Soy ${result.name} | PokéTest Poketiempo MX` : '¿Que nube eres? | PokéTest Poketiempo MX',
++  )
++
+   return (
+     <section className="section test-section" id="test">
+       <div className="section-heading">
+diff --git a/src/pages/Tienda.tsx b/src/pages/Tienda.tsx
+index adfe661..11622ce 100644
+--- a/src/pages/Tienda.tsx
++++ b/src/pages/Tienda.tsx
+@@ -1,3 +1,5 @@
++import usePageTitle from '../hooks/usePageTitle'
++
+ const shopItems = [
+   { name: 'Playeras de temporada', detail: 'Drops ligados a lluvias, calor, frentes frios y huracanes.' },
+   { name: 'Stickers climaticos', detail: 'Iconos, frases y nubes para laptops, termos y libretas.' },
+@@ -6,6 +8,8 @@ const shopItems = [
+ ]
+ 
+ function Tienda() {
++  usePageTitle('Tienda | Poketiempo MX')
++
+   return (
+     <section className="section shop-section" id="tienda">
+       <div className="section-heading">
+diff --git a/vite.config.ts b/vite.config.ts
+index 4eed774..165912e 100644
+--- a/vite.config.ts
++++ b/vite.config.ts
+@@ -2,7 +2,10 @@ import react from '@vitejs/plugin-react'
+ import { defineConfig } from 'vite'
+ 
+ // https://vite.dev/config/
++// Base explicito (no relativo) para que coincida con el basename del router.
++// GitHub Pages (repo actual): '/PokeTiempo-MX/'
++// Cuando se mude a dominio propio en raiz: cambiar solo esta linea a '/'
+ export default defineConfig({
+-  base: './',
++  base: '/PokeTiempo-MX/',
+   plugins: [react()],
+ })

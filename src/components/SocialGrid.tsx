@@ -6,7 +6,7 @@ type Social = {
 
 const socials: Social[] = [
   { label: 'Instagram', handle: '@poketiempo_mx', url: 'https://www.instagram.com/poketiempo_mx/' },
-  { label: 'TikTok', handle: '@poketiempo_mx', url: 'https://www.tiktok.com/@poketiempo.mx' },
+  { label: 'TikTok', handle: '@poketiempo.mx', url: 'https://www.tiktok.com/@poketiempo.mx' },
   { label: 'X', handle: '@poketiempo_mx', url: 'https://x.com/poketiempo_mx' },
   { label: 'Facebook', handle: 'Poketiempo MX', url: 'https://www.facebook.com/poketiempomx/' },
 ]

@@ -16,6 +16,19 @@
     <meta name="twitter:description" content="Clima, cultura pop y comunidad en Mexico." />
     <meta name="twitter:image" content="./favicon.png" />
     <title>Poketiempo MX | Clima, cultura pop y comunidad</title>
+    <script type="text/javascript">
+      // Contraparte de public/404.html: si venimos de un redirect de SPA
+      // (querystring ?/ruta), restauramos la URL real antes de que monte React,
+      // asi el router arranca ya en la ruta correcta.
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
   </head>
   <body>
     <div id="root"></div>

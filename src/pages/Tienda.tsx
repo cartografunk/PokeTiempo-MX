@@ -1,3 +1,5 @@
+import usePageTitle from '../hooks/usePageTitle'
+
 const shopItems = [
   { name: 'Playeras de temporada', detail: 'Drops ligados a lluvias, calor, frentes frios y huracanes.' },
   { name: 'Stickers climaticos', detail: 'Iconos, frases y nubes para laptops, termos y libretas.' },
@@ -6,6 +8,8 @@ const shopItems = [
 ]
 
 function Tienda() {
+  usePageTitle('Tienda | Poketiempo MX')
+
   return (
     <section className="section shop-section" id="tienda">
       <div className="section-heading">

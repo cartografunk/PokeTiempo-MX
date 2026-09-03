@@ -1,4 +1,5 @@
 import { useMemo, useState, type CSSProperties } from 'react'
+import usePageTitle from '../hooks/usePageTitle'
 
 type ResultKey = 'cumulo' | 'cumulonimbo' | 'cirro' | 'estrato'
 type Answer = {
@@ -107,6 +108,10 @@ function Test() {
   }, [answers])
 
   const result = resultKey ? results[resultKey] : null
+
+  usePageTitle(
+    result ? `Soy ${result.name} | PokéTest Poketiempo MX` : '¿Que nube eres? | PokéTest Poketiempo MX',
+  )
 
   return (
     <section className="section test-section" id="test">

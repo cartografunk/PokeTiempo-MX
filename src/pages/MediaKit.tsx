@@ -1,4 +1,5 @@
 import StatsGrid from '../components/StatsGrid'
+import usePageTitle from '../hooks/usePageTitle'
 
 const collaborationFormats = [
   'Videos cortos con narrativa meteorologica',
@@ -10,6 +11,8 @@ const collaborationFormats = [
 ]
 
 function MediaKit() {
+  usePageTitle('Media kit | Poketiempo MX')
+
   return (
     <>
       <section className="section" id="colaboraciones">

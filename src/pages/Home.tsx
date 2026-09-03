@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { CSSProperties } from 'react'
 import SocialGrid from '../components/SocialGrid'
+import usePageTitle from '../hooks/usePageTitle'
 
 const introPoints = [
   {
@@ -36,6 +37,8 @@ const switchboardCards = [
 ]
 
 function Home() {
+  usePageTitle('Poketiempo MX | Clima, cultura pop y comunidad')
+
   return (
     <>
       <section className="hero-section" id="inicio">
