@@ -14,24 +14,6 @@ const introPoints = [
   },
 ]
 
-const switchboardCards = [
-  {
-    title: 'Media kit',
-    text: 'Datos esenciales de comunidad y formatos de colaboracion para marcas, medios e instituciones.',
-    to: '/media-kit',
-  },
-  {
-    title: 'Tienda',
-    text: 'Merch y objetos coleccionables del proyecto, en fase de preview antes del ecommerce.',
-    to: '/tienda',
-  },
-  {
-    title: 'PokéTest',
-    text: '¿Que nube eres? Un quiz interactivo para jugar, aprender y compartir con la comunidad.',
-    to: '/test',
-  },
-]
-
 function Home() {
   return (
     <>

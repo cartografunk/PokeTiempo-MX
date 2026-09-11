@@ -11,7 +11,7 @@ const productImages = [
   },
 ]
 
-const shopItems = [
+const shopItems: { name: string; detail: string }[] = [
 
 ]
 

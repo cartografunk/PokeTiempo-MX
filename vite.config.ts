@@ -10,7 +10,7 @@ const devRoutes = new Set([
   '/PokeTiempo-MX/test',
 ])
 
-const useSourceIndexInDev = (): Plugin => ({
+const sourceIndexInDev = (): Plugin => ({
   name: 'use-source-index-in-dev',
   apply: 'serve',
   configureServer(server) {
@@ -38,5 +38,5 @@ const useSourceIndexInDev = (): Plugin => ({
 // Cuando se mude a dominio propio en raiz: cambiar solo esta linea a '/'
 export default defineConfig({
   base: '/PokeTiempo-MX/',
-  plugins: [useSourceIndexInDev(), react()],
+  plugins: [sourceIndexInDev(), react()],
 })
