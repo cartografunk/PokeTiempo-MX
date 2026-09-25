@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://poketiempo.mx/sitemap.xml
+Sitemap: https://cartografunk.github.io/PokeTiempo-MX/sitemap.xml
