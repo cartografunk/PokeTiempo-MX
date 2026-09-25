@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import MediaKit from './pages/MediaKit'
 import Tienda from './pages/Tienda'
 import Test from './pages/Test'
+import Tests from './pages/Tests'
 import useScrollToHash from './hooks/useScrollToHash'
 
 function Layout() {
@@ -21,7 +22,7 @@ function Layout() {
           <Link to="/media-kit#colaboraciones">Colaboraciones</Link>
           <Link to="/media-kit">Media kit</Link>
           <Link to="/tienda">Tienda</Link>
-          <Link to="/test">Test</Link>
+          <Link to="/tests">Tests</Link>
           <a href="#contacto">Contacto</a>
         </div>
       </nav>
@@ -30,6 +31,7 @@ function Layout() {
         <Route path="/" element={<Home />} />
         <Route path="/media-kit" element={<MediaKit />} />
         <Route path="/tienda" element={<Tienda />} />
+        <Route path="/tests" element={<Tests />} />
         <Route path="/test" element={<Test />} />
       </Routes>
 

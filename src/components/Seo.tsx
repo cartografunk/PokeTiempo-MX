@@ -7,7 +7,7 @@ const defaultImage = `${siteUrl}/hero.png`
 type SeoProps = {
   title: string
   description: string
-  path: '/' | '/media-kit' | '/tienda' | '/test'
+  path: '/' | '/media-kit' | '/tienda' | '/test' | '/tests'
   image?: string
 }
 

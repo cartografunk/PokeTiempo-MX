@@ -831,3 +831,31 @@ h3 {
     min-height: 278px;
   }
 }
+
+/* Tests */
+.quiz-title { font-size: clamp(28px, 5vw, 52px); line-height: 1.4; }
+.quiz-back { display: inline-block; margin-bottom: 26px; color: var(--blue-deep); font-weight: 800; }
+.question-title { font-family: var(--body); font-size: clamp(22px, 3vw, 30px); line-height: 1.4; }
+.quiz-progress progress { width: 100%; height: 16px; accent-color: var(--green); }
+.quiz-options { display: grid; gap: 14px; padding: 0; margin: 22px 0; border: 0; min-width: 0; }
+.quiz-option { display: flex; gap: 12px; align-items: center; padding: 16px; border: 3px solid var(--ink); border-radius: 8px; cursor: pointer; line-height: 1.5; }
+.quiz-option:hover { background: #e9f6ff; }
+.quiz-option:has(input:checked) { background: var(--yellow); box-shadow: 4px 4px 0 var(--ink); }
+.quiz-option:focus-within { outline: 3px solid var(--blue-deep); outline-offset: 3px; }
+.quiz-option input { flex-shrink: 0; width: 20px; height: 20px; accent-color: var(--blue-deep); }
+.quiz-navigation { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.quiz-navigation button { font: inherit; font-weight: 800; cursor: pointer; }
+.quiz-navigation button:disabled { opacity: .45; cursor: default; transform: none; box-shadow: none; }
+.result-title { font-size: clamp(22px, 4vw, 36px); line-height: 1.5; overflow-wrap: anywhere; }
+.cloud-profile { margin-top: 26px; padding-top: 24px; border-top: 2px solid var(--ink); }
+.cloud-profile p, .fact-box p { line-height: 1.6; }
+.cloud-description { white-space: pre-line; }
+.quiz-tally { margin-top: 24px; line-height: 1.8; }
+.quiz-tally summary { cursor: pointer; font-weight: 800; }
+.test-preview .pixel-cloud { margin: 20px 0 36px; }
+.test-preview h2 { font-size: clamp(24px, 4vw, 36px); line-height: 1.5; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 620px) {
+  .nav-links { display: flex; gap: 12px 16px; }
+  .nav-links a { font-size: 13px; }
+}

@@ -8,6 +8,7 @@ const devRoutes = new Set([
   '/PokeTiempo-MX/media-kit',
   '/PokeTiempo-MX/tienda',
   '/PokeTiempo-MX/test',
+  '/PokeTiempo-MX/tests',
 ])
 
 const sourceIndexInDev = (): Plugin => ({
