@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
@@ -7,7 +8,7 @@ import Test from './pages/Test'
 import Tests from './pages/Tests'
 import useScrollToHash from './hooks/useScrollToHash'
 
-function Layout() {
+export function Layout() {
   useScrollToHash()
 
   return (
@@ -33,6 +34,7 @@ function Layout() {
         <Route path="/tienda" element={<Tienda />} />
         <Route path="/tests" element={<Tests />} />
         <Route path="/test" element={<Test />} />
+      <Route path="*" element={<section className="section"><Helmet><title>Página no encontrada | Poketiempo MX</title><meta name="robots" content="noindex" /></Helmet><h1 className="quiz-title">Página no encontrada</h1><Link className="button secondary" to="/">Volver al inicio</Link></section>} />
       </Routes>
 
       <footer className="footer" id="contacto">

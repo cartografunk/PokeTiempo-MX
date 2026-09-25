@@ -1,4 +1,5 @@
 import Seo from '../components/Seo'
+import { absoluteUrl } from '../siteConfig'
 
 const productImages = [
   {
@@ -22,13 +23,13 @@ function Tienda() {
         title="Bucket Poketiempo MX | Merch climatico y drops de temporada"
         description="Conoce el Bucket Poketiempo, un sombrero amarillo con orejas y carita bordada para llevar el clima, la cultura pop y la comunidad puestos."
         path="/tienda"
-        image="https://poketiempo.mx/products/bucket-poketiempo/bucket-01.jpg"
+        image={absoluteUrl('products/bucket-poketiempo/bucket-01.jpg')}
       />
 
       <section className="section shop-section" id="tienda">
         <div className="section-heading">
           <p className="eyebrow">Tienda Poketiempo</p>
-          <h2>Bucket Poketiempo</h2>
+          <h1 className="quiz-title">Bucket Poketiempo</h1>
         </div>
 
         <article className="featured-product">

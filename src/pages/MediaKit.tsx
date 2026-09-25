@@ -22,7 +22,7 @@ function MediaKit() {
       <section className="section" id="colaboraciones">
         <div className="section-heading">
           <p className="eyebrow">Colaboraciones</p>
-          <h2>Formas de colaborar con el proyecto.</h2>
+          <h1 className="quiz-title">Colabora con Poketiempo MX</h1>
           <p>Una referencia para marcas, medios e instituciones que quieran participar desde la educacion, la cultura y la prevencion climatica.</p>
         </div>
         <div className="format-grid">

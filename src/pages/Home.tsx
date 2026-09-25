@@ -19,7 +19,7 @@ function Home() {
     <>
       <Seo
         title="Poketiempo MX | Clima, cultura pop y comunidad"
-        description="El tiempo en México para gente chidix"
+        description="Meteorología, climatología y cultura pop para gente chidix. Conoce Poketiempo MX, sus redes, colaboraciones y el test ¿Qué nube soy?"
         path="/"
       />
 

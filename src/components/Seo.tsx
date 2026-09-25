@@ -1,23 +1,25 @@
 import { Helmet } from 'react-helmet-async'
 
 const siteName = 'Poketiempo MX'
-const siteUrl = 'https://poketiempo.mx'
-const defaultImage = `${siteUrl}/hero.png`
+import { absoluteUrl, pageUrl, type SiteRoute } from '../siteConfig'
+const defaultImage = absoluteUrl('hero.png')
 
 type SeoProps = {
   title: string
   description: string
-  path: '/' | '/media-kit' | '/tienda' | '/test' | '/tests'
+  path: SiteRoute
   image?: string
 }
 
 function Seo({ title, description, path, image = defaultImage }: SeoProps) {
-  const canonicalUrl = `${siteUrl}${path === '/' ? '' : path}`
+  const canonicalUrl = pageUrl(path)
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content="index, follow, max-image-preview:large" />
+      <meta property="og:locale" content="es_MX" />
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={siteName} />

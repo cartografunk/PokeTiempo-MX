@@ -1,32 +1,42 @@
-# React + TypeScript + Vite
+# Poketiempo MX
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## Desarrollo y publicación
 
-Currently, two official plugins are available:
+- `npm run dev`: desarrollo local.
+- `npm run build`: compila React y genera HTML completo para las cinco rutas, sitemap.xml, robots.txt y 404.html en dist.
+- `node scripts/check-seo.mjs`: verifica los archivos generados después de compilar.
+- `node --test tests/cloudQuiz.test.mjs`: prueba el cálculo del test.
+- `npm run preview`: revisa el resultado de producción.
+- `npm run deploy`: publica dist en la rama gh-pages. No se ejecuta automáticamente al editar.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## SEO y dominio
 
-## React Compiler
+La dirección pública está centralizada en `src/siteConfig.ts`:
+`https://cartografunk.github.io/PokeTiempo-MX/`.
+Las páginas usan canonical con barra final porque se publican como carpetas con index.html. El contenido y los metadatos se renderizan al compilar; React hidrata las páginas para activar navegación y cuestionario. Las rutas desconocidas tienen noindex.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+No editar robots.txt ni sitemap.xml en dist: se regeneran en cada build desde la misma configuración que las URLs canónicas. Se eliminaron las copias antiguas que apuntaban al dominio no adquirido.
 
-## Expanding the Oxlint configuration
+### Search Console (paso pendiente en la cuenta del propietario)
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Después de publicar, añadir una propiedad de prefijo de URL para la dirección anterior. Verificarla con el archivo HTML proporcionado por Google: guardarlo con su nombre y contenido exactos en public, compilar y publicar. No inventar un código de verificación. Enviar el sitemap publicado en `https://cartografunk.github.io/PokeTiempo-MX/sitemap.xml` e inspeccionar las cinco URLs. Esto solicita descubrimiento, no garantiza indexación.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+En un sitio de proyecto, el robots.txt generado vive dentro de /PokeTiempo-MX/ y los buscadores no lo usan como reglas del dominio: consultan https://cartografunk.github.io/robots.txt. Gestionar ese archivo requiere el repositorio del sitio raíz. No se modificó ese otro sitio. El sitemap se puede enviar directamente a Search Console.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Cuando se compre el dominio
+
+1. Configurar y verificar el dominio en GitHub Pages, DNS y HTTPS.
+2. Cambiar siteUrl en src/siteConfig.ts por la URL HTTPS definitiva, con barra final. La base, imágenes, canonical, sitemap y robots se ajustan automáticamente.
+3. Añadir public/CNAME con el dominio definitivo si se continúa publicando con gh-pages.
+4. Compilar, ejecutar la comprobación SEO, previsualizar y publicar.
+5. Verificar la nueva propiedad en Search Console, enviar su sitemap y comprobar redirecciones desde las URLs antiguas.
+
+Los enlaces de correo hola@poketiempo.mx siguen siendo pendientes hasta configurar dominio y correo. Las tarjetas sociales usan hero.png provisionalmente; sustituirlas al terminar los diseños. SEO y Search Console no identifican personas que realizan el test; la analítica de eventos se configura por separado.
+
+## Imágenes y compartir resultados
+
+El resultado muestra una tarjeta provisional hasta cargar los diseños. Colocar las imágenes PNG/JPG en public/results y asignarlas en src/data/resultImages.ts: A=Cirrus, B=Cumulonimbus, C=Cumulus, D=Stratus, E=Altocumulus. Las diez parejas usan las claves AB, AC, AD, AE, BC, BD, BE, CD, CE, DE. Los empates múltiples sin diseño conservan la tarjeta provisional.
+
+WhatsApp y Facebook comparten el enlace del test con parámetros UTM por canal. No comparten aún una página o vista previa por resultado. Historias de Instagram se habilita al asignar la imagen; usa el menú nativo del dispositivo, sin garantizar que Instagram esté entre las opciones. Se ofrece descarga alternativa. Abrir el menú no confirma una publicación.
+
+No hay proveedor de analítica conectado: los parámetros UTM preparan la atribución, pero por sí solos no guardan visitas ni eventos. Search Console tampoco sustituye la medición del cuestionario.

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
+import ResultSharing from '../components/ResultSharing'
 import { letters, questions, results, scoreQuiz, type Letter } from '../data/cloudQuiz'
 
 function Test() {
@@ -25,7 +26,7 @@ function Test() {
     <>
       <Seo title="¿Qué nube soy? | Tests Poketiempo MX" description="Diez preguntas, cinco tipos de nube y un bonus si empatas. Descubre tu personalidad de nube." path="/test" />
       <section className="section test-section">
-        <Link className="quiz-back" to="/tests">← Todos los tests</Link>
+        <Link className="button secondary quiz-back" to="/tests">← Todos los tests</Link>
         <div className="section-heading">
           <p className="eyebrow">PokéTest · Personalidad</p>
           <h1 className="quiz-title">¿Qué nube soy?</h1>
@@ -81,13 +82,9 @@ function Test() {
                   <p><strong>Tu frase:</strong> {item.quote}</p>
                 </article>
               ))}
-              <details className="quiz-tally">
-                <summary>Ver mis puntuaciones</summary>
-                <ul>{results.map(item => <li key={item.key}>{item.name}: {result.tally[item.key as Letter]} de {questions.length}</li>)}</ul>
-              </details>
+              <ResultSharing winners={result.winners} names={names!} />
               <div className="result-actions">
                 <button type="button" onClick={restart}>Repetir test</button>
-                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Soy ${names} en el test de Poketiempo MX. ¿Qué nube eres?`)}&url=${encodeURIComponent(new URL(`${import.meta.env.BASE_URL}test`, window.location.origin).href)}`} target="_blank" rel="noreferrer">Compartir en X</a>
               </div>
             </div>
           )}
