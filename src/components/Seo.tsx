@@ -9,16 +9,17 @@ type SeoProps = {
   description: string
   path: SiteRoute
   image?: string
+  noindex?: boolean
 }
 
-function Seo({ title, description, path, image = defaultImage }: SeoProps) {
+function Seo({ title, description, path, image = defaultImage, noindex = false }: SeoProps) {
   const canonicalUrl = pageUrl(path)
 
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="robots" content="index, follow, max-image-preview:large" />
+      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large"} />
       <meta property="og:locale" content="es_MX" />
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:type" content="website" />

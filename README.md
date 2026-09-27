@@ -31,12 +31,20 @@ En un sitio de proyecto, el robots.txt generado vive dentro de /PokeTiempo-MX/ y
 4. Compilar, ejecutar la comprobación SEO, previsualizar y publicar.
 5. Verificar la nueva propiedad en Search Console, enviar su sitemap y comprobar redirecciones desde las URLs antiguas.
 
-Los enlaces de correo hola@poketiempo.mx siguen siendo pendientes hasta configurar dominio y correo. Las tarjetas sociales usan hero.png provisionalmente; sustituirlas al terminar los diseños. SEO y Search Console no identifican personas que realizan el test; la analítica de eventos se configura por separado.
+Los enlaces de correo hola@poketiempo.mx siguen siendo pendientes hasta configurar dominio y correo. Las páginas generales usan hero.png; las páginas de resultados usan las tarjetas PNG de cada nube. SEO y Search Console no identifican personas que realizan el test; la analítica de eventos se configura por separado.
 
 ## Imágenes y compartir resultados
 
-El resultado muestra una tarjeta provisional hasta cargar los diseños. Colocar las imágenes PNG/JPG en public/results y asignarlas en src/data/resultImages.ts: A=Cirrus, B=Cumulonimbus, C=Cumulus, D=Stratus, E=Altocumulus. Las diez parejas usan las claves AB, AC, AD, AE, BC, BD, BE, CD, CE, DE. Los empates múltiples sin diseño conservan la tarjeta provisional.
+Las cinco tarjetas originales de assets/img se publican sin modificar en public/results. El mapa está en src/data/resultImages.ts. Si se actualiza un diseño original, copiarlo también a public/results antes de compilar. Todas miden 1080 × 1920; la página conserva su proporción completa.
 
-WhatsApp y Facebook comparten el enlace del test con parámetros UTM por canal. No comparten aún una página o vista previa por resultado. Historias de Instagram se habilita al asignar la imagen; usa el menú nativo del dispositivo, sin garantizar que Instagram esté entre las opciones. Se ofrece descarga alternativa. Abrir el menú no confirma una publicación.
+El resultado muestra primero la imagen y mantiene la descripción textual en un desplegable accesible. «Descargar imagen» está dentro del grupo de acciones para compartir; los empates muestran una descarga identificada para cada nube ganadora.
 
-No hay proveedor de analítica conectado: los parámetros UTM preparan la atribución, pero por sí solos no guardan visitas ni eventos. Search Console tampoco sustituye la medición del cuestionario.
+Cada combinación tiene una página estática en /test/resultado/... con título, canonical, imagen Open Graph y botón para hacer el test. Los enlaces de WhatsApp y Facebook apuntan a esa página con UTM por canal. Para combinaciones, la vista previa usa la primera nube; la página muestra todas. Las redes pueden recortar o almacenar en caché la vista previa.
+
+Historias usa el menú nativo con las imágenes ya cargadas. El usuario debe añadir el sticker Enlace en Instagram: el botón de copiar prepara la URL. No se puede forzar Instagram como destino ni insertar automáticamente el sticker desde esta web. Compartir imagen y enlace ofrece ambos datos al menú nativo, pero la app elegida decide cuáles conserva. Descarga y copia manual siguen disponibles.
+
+Las páginas de resultados usan noindex, follow y no aparecen en el sitemap; las cinco páginas principales sí. Esto mantiene las vistas previas disponibles sin multiplicar páginas de combinaciones en la búsqueda.
+
+Validación: npm run build, node scripts/check-seo.mjs, node scripts/check-sharing.mjs y node --test tests/cloudQuiz.test.mjs.
+
+No hay proveedor de analítica conectado: los UTM preparan atribución, pero por sí solos no guardan visitas ni eventos. No se identifica al participante.

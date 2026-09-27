@@ -6,6 +6,7 @@ import MediaKit from './pages/MediaKit'
 import Tienda from './pages/Tienda'
 import Test from './pages/Test'
 import Tests from './pages/Tests'
+import SharedResult from './pages/SharedResult'
 import useScrollToHash from './hooks/useScrollToHash'
 
 export function Layout() {
@@ -34,6 +35,7 @@ export function Layout() {
         <Route path="/tienda" element={<Tienda />} />
         <Route path="/tests" element={<Tests />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/test/resultado/:slug" element={<SharedResult />} />
       <Route path="*" element={<section className="section"><Helmet><title>Página no encontrada | Poketiempo MX</title><meta name="robots" content="noindex" /></Helmet><h1 className="quiz-title">Página no encontrada</h1><Link className="button secondary" to="/">Volver al inicio</Link></section>} />
       </Routes>
 

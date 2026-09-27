@@ -1,9 +1,10 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
+import { sharedResults, resultPath } from '../src/data/resultImages.ts'
 import { render } from '../dist-ssr/entry-server.js'
 import { absoluteUrl, pageUrl, siteRoutes, siteBase } from '../src/siteConfig.ts'
 
 const template = await readFile('dist/index.html', 'utf8')
-for (const route of siteRoutes) {
+for (const route of [...siteRoutes, ...sharedResults.map(item => resultPath(item.winners))]) {
   const { body, head } = render(route)
   const html = template.replace(/<title>[\s\S]*?<\/title>/, '')
     .replace('</head>', `${head}</head>`)

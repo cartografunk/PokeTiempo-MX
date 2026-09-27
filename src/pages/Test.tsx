@@ -67,12 +67,14 @@ function Test() {
               <p className="eyebrow">{result.winners.length > 1 ? 'Bonus: personalidad híbrida de nubes' : 'Tu resultado'}</p>
               <h2 className="result-title" ref={heading} tabIndex={-1}>{names}</h2>
               {result.winners.length > 1 && <p>¡Empate! Estas nubes comparten tu puntuación más alta. Tu personalidad tiene un poco de cada una.</p>}
+              <ResultSharing key={result.winners.join("")} winners={result.winners} names={names!} />
               {result.bonus.map(pair => (
                 <div className="fact-box" key={pair.keys.join('')}>
                   <strong>{pair.keys.map(key => results.find(item => item.key === key)!.name).join(' + ')}</strong>
                   <p>{pair.description}</p>
                 </div>
               ))}
+              <details className="result-transcript"><summary>Leer descripción en texto</summary>
               {results.filter(item => result.winners.includes(item.key as Letter)).map(item => (
                 <article className="cloud-profile" key={item.key}>
                   <h3>{item.name} — {item.tag}</h3>
@@ -82,7 +84,7 @@ function Test() {
                   <p><strong>Tu frase:</strong> {item.quote}</p>
                 </article>
               ))}
-              <ResultSharing winners={result.winners} names={names!} />
+              </details>
               <div className="result-actions">
                 <button type="button" onClick={restart}>Repetir test</button>
               </div>
