@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Fotografía provisional de Shamed Saldaña</title>
+  <desc id="desc">Marcador de posición retro con las iniciales SS para sustituir por el retrato definitivo.</desc>
+  <rect width="800" height="1000" fill="#e9f6ff"/>
+  <path d="M0 0h800v1000H0z" fill="none" stroke="#1f2a44" stroke-width="28"/>
+  <path d="M0 120h800M0 240h800M0 360h800M0 480h800M0 600h800M0 720h800M0 840h800" stroke="#1f2a44" stroke-width="3" opacity=".12"/>
+  <path d="M100 0v1000M220 0v1000M340 0v1000M460 0v1000M580 0v1000M700 0v1000" stroke="#1f2a44" stroke-width="3" opacity=".12"/>
+  <circle cx="400" cy="354" r="172" fill="#ffcf4a" stroke="#1f2a44" stroke-width="24"/>
+  <path d="M152 890c24-205 115-312 248-312s224 107 248 312" fill="#5fb7ff" stroke="#1f2a44" stroke-width="24" stroke-linejoin="round"/>
+  <rect x="216" y="790" width="368" height="114" rx="18" fill="#fffbe6" stroke="#1f2a44" stroke-width="18"/>
+  <text x="400" y="870" text-anchor="middle" fill="#1f2a44" font-family="monospace" font-size="86" font-weight="900">SS</text>
+  <text x="400" y="960" text-anchor="middle" fill="#526076" font-family="sans-serif" font-size="30" font-weight="700">FOTO PROVISIONAL</text>
+</svg>

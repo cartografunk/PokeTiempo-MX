@@ -12,7 +12,6 @@ export default function Tests() {
           <p>Un ratito para jugar y descubrir qué dice el cielo de ti.</p>
         </div>
         <article className="quiz-card test-preview">
-          <div className="pixel-cloud" aria-hidden="true"><span /><span /><span /><span /></div>
           <p className="eyebrow">Personalidad · 10 preguntas</p>
           <h2>¿Qué nube soy?</h2>
           <p>¿Cirrus, Cumulonimbus, Cumulus, Stratus o Altocumulus? Descubre tu nube y las combinaciones bonus si empatas.</p>
