@@ -1,5 +1,6 @@
 import Seo from '../components/Seo'
 import StatsGrid from '../components/StatsGrid'
+import { contactEmail } from '../siteConfig'
 
 const collaborationFormats = [
   'Videos cortos con narrativa meteorologica',
@@ -41,8 +42,12 @@ function MediaKit() {
           <h2>Informacion esencial para evaluar colaboraciones.</h2>
         </div>
         <StatsGrid />
-        <a className="button primary" href="mailto:hola@poketiempo.mx?subject=Colaboracion%20con%20Poketiempo%20MX">
-          Contactar para colaboracion
+        <a
+          className="button primary"
+          href={`mailto:${contactEmail}?subject=${encodeURIComponent('Colaboración con Poketiempo MX')}`}
+          aria-label={`Proponer una colaboración por correo a ${contactEmail}`}
+        >
+          Contactar para colaboración
         </a>
       </section>
     </>

@@ -8,6 +8,7 @@ import Test from './pages/Test'
 import Tests from './pages/Tests'
 import SharedResult from './pages/SharedResult'
 import useScrollToHash from './hooks/useScrollToHash'
+import { contactEmail } from './siteConfig'
 
 export function Layout() {
   useScrollToHash()
@@ -25,7 +26,7 @@ export function Layout() {
           <Link to="/media-kit">Media kit</Link>
           <Link to="/tienda">Tienda</Link>
           <Link to="/tests">Tests</Link>
-          <a href="#contacto">Contacto</a>
+          <Link to="/#contacto">Contacto</Link>
         </div>
       </nav>
 
@@ -39,12 +40,18 @@ export function Layout() {
       <Route path="*" element={<section className="section"><Helmet><title>Página no encontrada | Poketiempo MX</title><meta name="robots" content="noindex" /></Helmet><h1 className="quiz-title">Página no encontrada</h1><Link className="button secondary" to="/">Volver al inicio</Link></section>} />
       </Routes>
 
-      <footer className="footer" id="contacto">
+      <footer className="footer">
         <div>
           <strong>Poketiempo MX</strong>
           <p>El tiempo en México para gente chidix</p>
         </div>
-        <a className="button secondary" href="mailto:hola@poketiempo.mx">Contacto</a>
+        <a
+          className="button secondary"
+          href={`mailto:${contactEmail}`}
+          aria-label={`Escribir un correo a ${contactEmail}`}
+        >
+          Contacto
+        </a>
       </footer>
     </main>
   )
