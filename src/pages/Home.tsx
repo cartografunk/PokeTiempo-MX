@@ -9,14 +9,18 @@ import nube3 from '../assets/clouds/nube3.png'
 import nube4 from '../assets/clouds/nube4.png'
 import { contactEmail } from '../siteConfig'
 
-const introPoints = [
+const promises = [
   {
-    title: 'Logo',
-    text: 'Pendiente (IMAGEN, Opción 1 Collage',
+    label: 'Entendible',
+    text: 'El clima explicado sin tecnicismos y sin miedo a las palabras raras.',
   },
   {
-    title: 'Imagen 1',
-    text: 'Pendiente',
+    label: 'Recordable',
+    text: 'Datos que se quedan gracias a la cultura pop y a referencias que ya conoces.',
+  },
+  {
+    label: 'Compartible',
+    text: 'Formatos cortos hechos para mandarse al chat y a las redes.',
   },
 ]
 
@@ -77,36 +81,38 @@ function Home() {
             El tiempo para gente chidix :)
           </p>
           <div className="hero-actions">
-            <a className="button secondary" href="#quienes-somos">Conocer el proyecto</a>
             <Link className="button primary" to="/test">Test: ¿Qué nube soy?</Link>
+            <a className="button secondary" href="#quienes-somos">Conocer el proyecto</a>
           </div>
         </div>
 
         <div className="hero-sky" aria-hidden="true">
-          <img className="hero-cloud hero-cloud--1" src={nube1} alt="" loading="eager" decoding="async" />
+          <img className="hero-cloud hero-cloud--1" src={nube3} alt="" loading="eager" decoding="async" />
           <img className="hero-cloud hero-cloud--2" src={nube2} alt="" loading="eager" decoding="async" />
-          <img className="hero-cloud hero-cloud--3" src={nube3} alt="" loading="eager" decoding="async" />
+          <img className="hero-cloud hero-cloud--3" src={nube1} alt="" loading="eager" decoding="async" />
           <img className="hero-cloud hero-cloud--4" src={nube4} alt="" loading="eager" decoding="async" />
         </div>
       </section>
 
       <section className="section intro-section" id="intro">
         <div className="intro-lead">
-          <p className="eyebrow">¿Que es Poketiempo MX?</p>
-          <h2>Una forma mas cercana de hablar del cielo</h2>
-          <p>
+          <p className="eyebrow">¿Qué es Poketiempo MX?</p>
+          <h2>Una forma más cercana de hablar del cielo</h2>
+          <p className="intro-definition">
             Poketiempo MX es un proyecto de divulgación meteorológica que convierte temas sobre el tiempo atmosférico
-            en contenido entendible, recordable y compartible para audiencias digitales en Mexico
+            en contenido entendible, recordable y compartible para audiencias digitales en México.
           </p>
         </div>
-        <div className="intro-grid">
-          {introPoints.map((point) => (
-            <article key={point.title}>
-              <h3>{point.title}</h3>
-              <p>{point.text}</p>
-            </article>
-          ))}
-        </div>
+        <article className="intro-card">
+          <dl className="intro-promises">
+            {promises.map((promise) => (
+              <div key={promise.label}>
+                <dt>{promise.label}</dt>
+                <dd>{promise.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </article>
       </section>
 
       <section className="section about-section" id="quienes-somos">

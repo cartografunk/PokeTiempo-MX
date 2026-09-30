@@ -22,6 +22,15 @@ function Test() {
     setStep(0)
   }
 
+  function chooseAnswer(answer: Letter) {
+    setAnswers(current => {
+      const next = [...current]
+      next[step] = answer
+      return next
+    })
+    setStep(current => current + 1)
+  }
+
   return (
     <>
       <Seo title="¿Qué nube soy? | Tests Poketiempo MX" description="Diez preguntas, cinco tipos de nube y un bonus si empatas. Descubre tu personalidad de nube." path="/test" />
@@ -30,7 +39,7 @@ function Test() {
         <div className="section-heading">
           <p className="eyebrow">PokéTest · Personalidad</p>
           <h1 className="quiz-title">¿Qué nube soy?</h1>
-          <p>Elige la respuesta que más se parezca a ti. Al final descubrirás tu nube o, si empatas, tu combinación de nubes.</p>
+          <p>Elige la respuesta que más se parezca a ti <br/><br/> Al final descubrirás tu nube</p>
         </div>
         <div className="quiz-card">
           {!complete && (
@@ -45,20 +54,13 @@ function Test() {
                 {questions[step].answers.map((answer, index) => (
                   <label className="quiz-option" key={`${step}-${index}`}>
                     <input type="radio" name={`question-${step}`} value={letters[index]} checked={answers[step] === letters[index]}
-                      onChange={() => setAnswers(current => {
-                        const next = [...current]
-                        next[step] = letters[index]
-                        return next
-                      })} />
+                      onChange={() => chooseAnswer(letters[index])} />
                     <span><strong>{letters[index]})</strong> {answer}</span>
                   </label>
                 ))}
               </fieldset>
               <div className="quiz-navigation">
                 <button className="button secondary" type="button" disabled={step === 0} onClick={() => setStep(step - 1)}>Anterior</button>
-                <button className="button primary" type="button" disabled={!answers[step]} onClick={() => setStep(step + 1)}>
-                  {step === questions.length - 1 ? 'Ver mi resultado' : 'Siguiente'}
-                </button>
               </div>
             </>
           )}
