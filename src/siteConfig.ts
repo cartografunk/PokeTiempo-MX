@@ -1,5 +1,5 @@
-// Cambiar únicamente cuando el dominio propio esté comprado y configurado.
-export const siteUrl = 'https://cartografunk.github.io/PokeTiempo-MX/'
+// URL pública compartida por el build, el router y los metadatos.
+export const siteUrl = 'https://poketiempo.mx/'
 export const siteBase = new URL(siteUrl).pathname
 export const siteRoutes = ['/', '/media-kit', '/tienda', '/tests', '/test'] as const
 export type SiteRoute = typeof siteRoutes[number] | `/test/resultado/${string}`

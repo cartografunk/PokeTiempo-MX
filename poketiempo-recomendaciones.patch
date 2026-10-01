@@ -36,15 +36,15 @@ index 0000000..ca23625
 +    <script type="text/javascript">
 +      // Truco estandar para SPAs en GitHub Pages (github.com/rafgraph/spa-github-pages).
 +      // GitHub Pages no reescribe rutas de client-side routing: cuando alguien entra
-+      // directo a /PokeTiempo-MX/test o refresca esa URL, sirve este 404.html.
++      // directo a /test o refresca esa URL, sirve este 404.html.
 +      // Aqui codificamos la ruta real en un querystring y redirigimos a index.html,
 +      // que la decodifica (ver script en index.html) y restaura la URL con
 +      // history.replaceState sin volver a recargar.
 +      //
-+      // pathSegmentsToKeep = 1 porque el sitio vive bajo /PokeTiempo-MX/ (un segmento).
-+      // Si se muda a un dominio propio en raiz, cambiar a 0 (o borrar este archivo
-+      // junto con el script de index.html, ya que en raiz no hace falta).
-+      var pathSegmentsToKeep = 1
++      // pathSegmentsToKeep = 0 porque el sitio vive en la raiz del dominio.
++      // Para retirar este redirect heredado, borrar este archivo
++      // junto con el script de index.html cuando las rutas esten prerenderizadas.
++      var pathSegmentsToKeep = 0
 +
 +      var l = window.location
 +      l.replace(
@@ -290,10 +290,10 @@ index 4eed774..165912e 100644
  
  // https://vite.dev/config/
 +// Base explicito (no relativo) para que coincida con el basename del router.
-+// GitHub Pages (repo actual): '/PokeTiempo-MX/'
++// GitHub Pages (dominio propio): '/'
 +// Cuando se mude a dominio propio en raiz: cambiar solo esta linea a '/'
  export default defineConfig({
 -  base: './',
-+  base: '/PokeTiempo-MX/',
++  base: '/',
    plugins: [react()],
  })

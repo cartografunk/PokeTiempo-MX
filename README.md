@@ -12,23 +12,21 @@
 
 ## SEO y dominio
 
-La dirección pública está centralizada en `src/siteConfig.ts`: `https://cartografunk.github.io/PokeTiempo-MX/`. Las páginas usan canonical con barra final porque se publican como carpetas con index.html. El contenido y los metadatos se renderizan al compilar; React hidrata las páginas para activar navegación y cuestionario. Las rutas desconocidas tienen noindex.
+La dirección pública está centralizada en `src/siteConfig.ts`: `https://poketiempo.mx/`. Las páginas usan canonical con barra final porque se publican como carpetas con index.html. El contenido y los metadatos se renderizan al compilar; React hidrata las páginas para activar navegación y cuestionario. Las rutas desconocidas tienen noindex.
 
 No editar robots.txt ni sitemap.xml en dist: se regeneran en cada build desde la misma configuración que las URLs canónicas.
 
 ### Search Console
 
-Después de publicar, añadir una propiedad de prefijo de URL para la dirección anterior. Verificarla con el archivo HTML proporcionado por Google: guardarlo con su nombre y contenido exactos en public, compilar y publicar. Enviar `https://cartografunk.github.io/PokeTiempo-MX/sitemap.xml` e inspeccionar las cinco URLs.
+Después de publicar, añadir una propiedad de prefijo de URL para `https://poketiempo.mx/`. Verificarla con el archivo HTML proporcionado por Google: guardarlo con su nombre y contenido exactos en public, compilar y publicar. Enviar `https://poketiempo.mx/sitemap.xml` e inspeccionar las cinco URLs.
 
-En un sitio de proyecto, el robots.txt generado vive dentro de `/PokeTiempo-MX/`; los buscadores consultan el archivo de la raíz de `cartografunk.github.io`. Gestionarlo requiere el repositorio del sitio raíz. El sitemap sí se puede enviar directamente a Search Console.
+El archivo robots.txt se publica en `https://poketiempo.mx/robots.txt` y apunta al sitemap del dominio propio.
 
-### Cuando se compre el dominio
+### Dominio propio
 
-1. Configurar y verificar el dominio en GitHub Pages, DNS y HTTPS.
-2. Cambiar `siteUrl` en `src/siteConfig.ts` por la URL HTTPS definitiva, con barra final.
-3. Añadir `public/CNAME` con el dominio definitivo si se continúa publicando con gh-pages.
-4. Compilar, verificar, previsualizar y publicar.
-5. Verificar la nueva propiedad en Search Console, enviar su sitemap y comprobar redirecciones.
+`siteUrl` define `https://poketiempo.mx/` y `siteBase` resulta `/`. Vite y los routers usan esa base. `public/CNAME` contiene `poketiempo.mx` y se copia a `dist/CNAME` en cada build, conservando el dominio al publicar con `gh-pages -d dist`.
+
+La configuración del dominio, DNS y HTTPS se gestiona en GitHub Pages y el proveedor de DNS. Después de publicar, verificar la propiedad en Search Console, enviar su sitemap y comprobar redirecciones.
 
 ## Imágenes y funnel de resultados
 

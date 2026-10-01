@@ -13,7 +13,7 @@ for (const route of siteRoutes) {
   assert.equal((html.match(/<h1\b/g) || []).length, 1, route)
   assert.ok(html.includes('name="description"'), route)
   assert.ok(html.includes('property="og:image"'), route)
-  assert.ok(!html.includes('https://poketiempo.mx'), route)
+  assert.ok(html.includes(`property="og:url" content="${canonical}"`), route)
   assert.ok(!html.includes('content="noindex"'), route)
   assert.ok(html.includes('<div id="root"><main>'), route)
   titles.add(html.match(/<title>(.*?)<\/title>/)[1])

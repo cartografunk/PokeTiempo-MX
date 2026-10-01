@@ -13,7 +13,8 @@ const expected = [
 test('every share URL points to the result landing and identifies its channel', () => {
   for (const [source, medium] of expected) {
     const url = new URL(buildShareUrl(['A'], source, medium))
-    assert.equal(url.pathname, '/PokeTiempo-MX/test/resultado/cirrus/')
+    assert.equal(url.origin, 'https://poketiempo.mx')
+    assert.equal(url.pathname, '/test/resultado/cirrus/')
     assert.equal(url.searchParams.get('ref'), 'share')
     assert.equal(url.searchParams.get('utm_source'), source)
     assert.equal(url.searchParams.get('utm_medium'), medium)
@@ -23,5 +24,5 @@ test('every share URL points to the result landing and identifies its channel', 
 
 test('hybrid results keep every winning cloud in the landing path', () => {
   const url = new URL(buildShareUrl(['E', 'B'], 'instagram', 'story'))
-  assert.equal(url.pathname, '/PokeTiempo-MX/test/resultado/cumulonimbus-altocumulus/')
+  assert.equal(url.pathname, '/test/resultado/cumulonimbus-altocumulus/')
 })
