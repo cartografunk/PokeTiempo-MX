@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 
 const siteName = 'Poketiempo MX'
 import { absoluteUrl, pageUrl, type SiteRoute } from '../siteConfig'
-const defaultImage = absoluteUrl('hero.png')
+const defaultImage = absoluteUrl('og-image.png')
 
 type SeoProps = {
   title: string
@@ -28,6 +28,9 @@ function Seo({ title, description, path, image = defaultImage, noindex = false }
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      {image === defaultImage && <meta property="og:image:width" content="1200" />}
+      {image === defaultImage && <meta property="og:image:height" content="630" />}
+      {image === defaultImage && <meta property="og:image:type" content="image/png" />}
       <meta property="og:image:alt" content="Poketiempo MX: clima, cultura pop y comunidad" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
