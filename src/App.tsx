@@ -22,7 +22,6 @@ export function Layout() {
         <div className="nav-links">
           <Link to="/#intro">Proyecto</Link>
           <Link to="/media-kit#colaboraciones">Colaboraciones</Link>
-          <Link to="/media-kit">Media kit</Link>
           <Link to="/tienda">Tienda</Link>
           <Link to="/tests">Tests</Link>
           <Link to="/#contacto">Contacto</Link>

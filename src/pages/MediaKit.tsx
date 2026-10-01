@@ -1,15 +1,7 @@
+import CollaborationFlow from '../components/CollaborationFlow'
 import Seo from '../components/Seo'
 import StatsGrid from '../components/StatsGrid'
 import { contactEmail } from '../siteConfig'
-
-const collaborationFormats = [
-  'Videos cortos con narrativa meteorologica',
-  'Carruseles educativos para temporadas climaticas',
-  'Historias con encuestas y participacion de comunidad',
-  'Charlas, talleres y activaciones educativas',
-  'Campanas de prevencion con lenguaje claro',
-  'Coberturas especiales con enfoque de divulgacion',
-]
 
 function MediaKit() {
   return (
@@ -23,17 +15,12 @@ function MediaKit() {
       <section className="section" id="colaboraciones">
         <div className="section-heading">
           <p className="eyebrow">Colaboraciones</p>
-          <h1 className="quiz-title">Colabora con Poketiempo MX</h1>
-          <p>Una referencia para marcas, medios e instituciones que quieran participar desde la educacion, la cultura y la prevencion climatica.</p>
+          <h1 className="quiz-title">Colabora con Shamed Saldaña</h1>
+          <p>Si te interesa una colaboación, contáctanos
+            <br />Abajo puedes ver algunas de las colaboraciones que hemos realizado con marcas.
+          </p>
         </div>
-        <div className="format-grid">
-          {collaborationFormats.map((format) => (
-            <article className="format-card" key={format}>
-              <span className="card-icon">◆</span>
-              <h3>{format}</h3>
-            </article>
-          ))}
-        </div>
+        <CollaborationFlow />
       </section>
 
       <section className="section media-panel" id="mediakit">
