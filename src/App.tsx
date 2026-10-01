@@ -8,7 +8,6 @@ import Test from './pages/Test'
 import Tests from './pages/Tests'
 import SharedResult from './pages/SharedResult'
 import useScrollToHash from './hooks/useScrollToHash'
-import { contactEmail } from './siteConfig'
 
 export function Layout() {
   useScrollToHash()
@@ -45,13 +44,13 @@ export function Layout() {
           <strong>Poketiempo MX</strong>
           <p>El tiempo en México para gente chidix</p>
         </div>
-        <a
+        <Link
           className="button secondary"
-          href={`mailto:${contactEmail}`}
-          aria-label={`Escribir un correo a ${contactEmail}`}
+          to="/#contacto"
+          aria-label="Ir a la sección de contacto"
         >
           Contacto
-        </a>
+        </Link>
       </footer>
     </main>
   )
