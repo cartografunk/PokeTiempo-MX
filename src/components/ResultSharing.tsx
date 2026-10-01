@@ -68,28 +68,15 @@ export default function ResultSharing({ winners, names }: Props) {
 
   return (
     <section className="result-sharing" aria-label="Imagen y opciones para compartir">
-      <div className="result-artworks">
-        {winners.map(letter => {
-          const profile = results.find(item => item.key === letter)!
-          return <figure key={letter}>
-            <img
-              className="result-artwork"
-              src={`${import.meta.env.BASE_URL}${resultImages[letter]}`}
-              alt={`${profile.name}: ${profile.tag}. ${profile.description} Tu lado fuerte: ${profile.strength}. Tu lado complicado: ${profile.challenge}. Tu frase: ${profile.quote}`}
-              width="1080"
-              height="1920"
-            />
-          </figure>
-        })}
-      </div>
       <h3>Comparte tu nube e invita a alguien a descubrir la suya</h3>
+      <p>Tu nube ya tiene imagen lista para compartir. Descárgala completa y con mejor calidad que una captura de pantalla.</p>
       <p>Compartir en:</p>
       <div className="result-actions share-actions">
+        <button className="button primary" type="button" onClick={() => shareImage(false)} disabled={!artworks.length || busy}>Compartir mi nube</button>
         <button type="button" onClick={() => shareImage(true)} disabled={!artworks.length || busy}>Historias de Instagram</button>
         <a href={`https://wa.me/?text=${encodeURIComponent(`${text} ${buildShareUrl(winners, 'whatsapp', 'post')}`)}`} target="_blank" rel="noreferrer">WhatsApp</a>
         <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(buildShareUrl(winners, 'facebook', 'post'))}`} target="_blank" rel="noreferrer">Facebook</a>
         <a href={`https://x.com/intent/post?text=${encodeURIComponent(text)}&url=${encodeURIComponent(buildShareUrl(winners, 'x', 'post'))}`} target="_blank" rel="noreferrer">X</a>
-        <button type="button" onClick={() => shareImage(false)} disabled={!artworks.length || busy}>Compartir imagen y enlace</button>
         {winners.map(letter => {
           const profile = results.find(item => item.key === letter)!
           const artwork = artworks.find(item => item.letter === letter)
@@ -111,6 +98,20 @@ export default function ResultSharing({ winners, names }: Props) {
       </aside>
       <p className="share-status" role="status">{message}</p>
       {showLink && <label className="manual-share-link">Enlace para copiar<input readOnly value={buildShareUrl(winners, 'instagram', 'story')} onFocus={event => event.currentTarget.select()} /></label>}
+      <div className="result-artworks">
+        {winners.map(letter => {
+          const profile = results.find(item => item.key === letter)!
+          return <figure key={letter}>
+            <img
+              className="result-artwork"
+              src={`${import.meta.env.BASE_URL}${resultImages[letter]}`}
+              alt={`${profile.name}: ${profile.tag}. ${profile.description} Tu lado fuerte: ${profile.strength}. Tu lado complicado: ${profile.challenge}. Tu frase: ${profile.quote}`}
+              width="1080"
+              height="1920"
+            />
+          </figure>
+        })}
+      </div>
     </section>
   )
 }
